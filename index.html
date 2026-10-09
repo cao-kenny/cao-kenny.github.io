@@ -1,15 +1,139 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kenny的主页</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenny 的主页</title>
+  <link rel="stylesheet" href="css/output.css">
+  <style>
+    body { background: #0b1020; color: #e2e8f0; margin: 0; }
+    .pf-filter { padding: 0.4rem 1rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; background: transparent; cursor: pointer; font-size: 0.875rem; }
+    .pf-filter.active { background: #14b8a6; border-color: #14b8a6; color: #0b1020; font-weight: 600; }
+    #caseModal { align-items: center; justify-content: center; padding: 1rem; }
+    #caseModal:not(.hidden) { display: flex; }
+    section { scroll-margin-top: 5rem; }
+  </style>
 </head>
-<body>
-    <div class="card">
-        <h1>你好，我是kennycao</h1>
-        <p>欢迎来到我的主页！</p>
+<body id="top">
+
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-ink-900/70 backdrop-blur">
+    <div class="container flex items-center justify-between py-4">
+      <a href="#top" class="text-lg font-extrabold text-white">Kenny Cao</a>
+      <nav class="hidden lg:flex gap-8 text-sm text-slate-300">
+        <a href="#learning" class="hover:text-white">在学什么</a>
+        <a href="#work" class="hover:text-white">作品</a>
+        <a href="#contact" class="hover:text-white">联系</a>
+      </nav>
+      <button id="menuBtn" type="button" class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10" aria-label="菜单">
+        <svg id="menuIcon" class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="closeIcon" class="size-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
+    <nav id="mobileNav" class="hidden lg:hidden border-t border-white/10">
+      <div class="container flex flex-col gap-3 py-4 text-slate-300">
+        <a href="#learning" class="hover:text-white">在学什么</a>
+        <a href="#work" class="hover:text-white">作品</a>
+        <a href="#contact" class="hover:text-white">联系</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-dots">
+      <div class="container grid gap-10 lg:grid-cols-2 items-center py-16 lg:py-24">
+        <div>
+          <p class="text-sm font-semibold text-teal-400">你好，我是</p>
+          <h1 class="mt-2 text-4xl font-extrabold leading-tight text-white lg:text-5xl">Kenny Cao</h1>
+          <p class="mt-4 max-w-2xl text-lg text-slate-300">我正在学习 JavaScript，之前学过 C#。这个网站是我边学边做的，每学会一点就多加一点。</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#work" class="rounded-full bg-gradient-to-r from-accent-500 to-accent-700 px-5 py-3 font-semibold text-white shadow-glow">看看作品</a>
+            <a href="https://github.com/cao-kenny" class="rounded-full border border-white/10 px-5 py-3 font-semibold text-white hover:bg-white/5">我的 GitHub</a>
+          </div>
+        </div>
+        <img src="images/profile.avif" alt="头像（示例图，请替换成你自己的）" class="mx-auto w-full max-w-sm aspect-square object-cover rounded-xl3 shadow-soft ring-1 ring-white/10">
+      </div>
+    </section>
+
+    <section id="learning" class="border-t border-white/5 py-16 lg:py-24">
+      <div class="container">
+        <h2 class="text-3xl font-bold text-white md:text-4xl">我在学什么</h2>
+        <p class="mt-3 max-w-2xl text-slate-300">按顺序一步步来：先把页面搭起来，再让它动起来。</p>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="glass rounded-xl2 border border-white/10 p-5">
+            <img src="images/s1.avif" alt="" class="h-48 w-full rounded-xl object-cover">
+            <h3 class="mt-4 text-lg font-semibold text-white">HTML 与 CSS</h3>
+            <p class="mt-2 text-sm text-slate-300">布局、毛玻璃、过渡和动画，正在练 Flexbox 和 Grid。</p>
+          </article>
+          <article class="glass rounded-xl2 border border-white/10 p-5">
+            <img src="images/s2.avif" alt="" class="h-48 w-full rounded-xl object-cover">
+            <h3 class="mt-4 text-lg font-semibold text-white">JavaScript</h3>
+            <p class="mt-2 text-sm text-slate-300">DOM 操作和事件，给页面加上交互。</p>
+          </article>
+          <article class="glass rounded-xl2 border border-white/10 p-5">
+            <img src="images/s3.avif" alt="" class="h-48 w-full rounded-xl object-cover">
+            <h3 class="mt-4 text-lg font-semibold text-white">C#</h3>
+            <p class="mt-2 text-sm text-slate-300">学过一部分，基础概念在学 JavaScript 时很有用。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="border-t border-white/5 py-16 lg:py-24">
+      <div class="container">
+        <h2 class="text-3xl font-bold text-white md:text-4xl">作品</h2>
+        <p class="mt-3 max-w-2xl text-slate-300">下面是示例内容，换成你自己的项目、图片和说明。</p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <button type="button" class="pf-filter active" data-filter="all">全部</button>
+          <button type="button" class="pf-filter" data-filter="web">网页</button>
+          <button type="button" class="pf-filter" data-filter="practice">练习</button>
+        </div>
+        <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <article class="pf-card glass rounded-xl2 border border-white/10 p-4" data-cat="web">
+            <img src="images/w1.avif" alt="" class="h-56 w-full rounded-xl object-cover">
+            <h3 class="mt-4 text-lg font-semibold text-white">个人主页</h3>
+            <p class="mt-1 text-sm text-slate-400">网页</p>
+            <button type="button" class="js-case mt-3 text-sm font-semibold text-teal-400 hover:underline" data-img="images/w1.avif" data-title="个人主页" data-desc="部署在 GitHub Pages 上的个人网站，用 HTML、CSS 和 JavaScript 手写。">查看详情</button>
+          </article>
+          <article class="pf-card glass rounded-xl2 border border-white/10 p-4" data-cat="practice">
+            <img src="images/w2.avif" alt="" class="h-56 w-full rounded-xl object-cover">
+            <h3 class="mt-4 text-lg font-semibold text-white">毛玻璃卡片</h3>
+            <p class="mt-1 text-sm text-slate-400">练习</p>
+            <button type="button" class="js-case mt-3 text-sm font-semibold text-teal-400 hover:underline" data-img="images/w2.avif" data-title="毛玻璃卡片" data-desc="练习 backdrop-filter、渐变背景和 hover 过渡效果。">查看详情</button>
+          </article>
+          <article class="pf-card glass rounded-xl2 border border-white/10 p-4" data-cat="practice">
+            <img src="images/w3.avif" alt="" class="h-56 w-full rounded-xl object-cover">
+            <h3 class="mt-4 text-lg font-semibold text-white">交互小练习</h3>
+            <p class="mt-1 text-sm text-slate-400">练习</p>
+            <button type="button" class="js-case mt-3 text-sm font-semibold text-teal-400 hover:underline" data-img="images/w3.avif" data-title="交互小练习" data-desc="用 JavaScript 做菜单开关、主题切换等小功能。">查看详情</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="border-t border-white/5 py-16 lg:py-24">
+      <div class="container">
+        <h2 class="text-3xl font-bold text-white md:text-4xl">联系我</h2>
+        <p class="mt-3 max-w-2xl text-slate-300">想交流前端学习，或者看看我的代码，可以从 GitHub 找到我。</p>
+        <a href="https://github.com/cao-kenny" class="mt-6 inline-block rounded-full bg-gradient-to-r from-accent-500 to-accent-700 px-5 py-3 font-semibold text-white shadow-glow">github.com/cao-kenny</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-10">
+    <div class="container text-sm text-slate-400">© <span id="year"></span> Kenny Cao</div>
+  </footer>
+
+  <div id="caseModal" class="hidden fixed inset-0 z-50 bg-black/60" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="w-full max-w-2xl overflow-hidden rounded-xl3 border border-white/10 bg-ink-800 shadow-soft">
+      <img id="caseImg" src="" alt="" class="h-56 w-full object-cover">
+      <div class="p-6">
+        <h3 id="caseTitle" class="text-2xl font-bold text-white"></h3>
+        <p id="caseDesc" class="mt-3 text-slate-300"></p>
+        <button id="caseClose" type="button" class="mt-6 rounded-full border border-white/10 px-5 py-2 text-sm font-semibold text-white hover:bg-white/10">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
